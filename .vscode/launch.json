@@ -1,0 +1,65 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Web API (Debug)",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "${workspaceFolder}/FlashcardsAPI/bin/Debug/net9.0/FlashcardsAPI.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/FlashcardsAPI",
+      "stopAtEntry": false,
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+        "uriFormat": "%s/openapi/v1.json"
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    {
+      "name": "Web API",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "dotnet",
+      "runtimeArgs": [
+        "run",
+        "--project",
+        "${workspaceFolder}/FlashcardsAPI/FlashcardsAPI.csproj"
+      ],
+      "console": "integratedTerminal",
+      "serverReadyAction": {
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+        "uriFormat": "%s/openapi/v1.json",
+        "action": "openExternally"
+      }
+    },
+    {
+      "name": "UI App",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "cwd": "${workspaceFolder}/FlashcardsUI",
+      "console": "integratedTerminal",
+      "serverReadyAction": {
+        "pattern": "Local:\\s+(https?://\\S+)",
+        "uriFormat": "%s",
+        "action": "openExternally"
+      }
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Web API + UI",
+      "configurations": ["Web API", "UI App"],
+      "stopAll": true
+    },
+    {
+      "name": "Web API (Debug) + UI",
+      "configurations": ["Web API (Debug)", "UI App"],
+      "stopAll": true
+    }
+  ]
+}
