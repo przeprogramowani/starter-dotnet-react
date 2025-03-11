@@ -20,6 +20,13 @@ dotnet tool install --global dotnet-ef
 2. In FlashcardsUI run `npm install && npm run build`
 3. In FlashcardsAPI run `dotnet restore && dotnet build`
 
+## Local Development
+
+You can use built-in launch config for VS Code or run the following commands in two separate terminals:
+
+1. In FlashcardsAPI run `dotnet watch run` (localhost:3001)
+2. In FlashcardsUI run `npm start` (localhost:3000)
+
 ## API in Test Mode
 
 ```bash
@@ -33,10 +40,3 @@ cd FlashcardsUI
 npx playwright install
 npx playwright test
 ```
-
-## Local Development
-
-You can use built-in launch config for VS Code or run the following commands in two separate terminals:
-
-1. In FlashcardsAPI run `dotnet watch run` (localhost:3001)
-2. In FlashcardsUI run `npm start` (localhost:3000)
