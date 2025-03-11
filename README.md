@@ -37,6 +37,6 @@ dotnet run -e ASPNETCORE_ENVIRONMENT=Test
 
 ```bash
 cd FlashcardsUI
-npx playwright install
+npx playwright install chromium
 npx playwright test
 ```
