@@ -2,23 +2,6 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Web API (Debug)",
-      "type": "coreclr",
-      "request": "launch",
-      "program": "${workspaceFolder}/FlashcardsAPI/bin/Debug/net9.0/FlashcardsAPI.dll",
-      "args": [],
-      "cwd": "${workspaceFolder}/FlashcardsAPI",
-      "stopAtEntry": false,
-      "serverReadyAction": {
-        "action": "openExternally",
-        "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
-        "uriFormat": "%s/openapi/v1.json"
-      },
-      "env": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
-    {
       "name": "Web API",
       "type": "node",
       "request": "launch",
@@ -26,8 +9,36 @@
       "runtimeArgs": [
         "run",
         "--project",
-        "${workspaceFolder}/FlashcardsAPI/FlashcardsAPI.csproj"
+        "${workspaceFolder}/FlashcardsAPI/FlashcardsAPI.csproj",
+        "--launch-profile",
+        "http"
       ],
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "console": "integratedTerminal",
+      "serverReadyAction": {
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+        "uriFormat": "%s/openapi/v1.json",
+        "action": "openExternally"
+      }
+    },
+    {
+      "name": "Web API (Test)",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "dotnet",
+      "runtimeArgs": [
+        "run",
+        "--project",
+        "${workspaceFolder}/FlashcardsAPI/FlashcardsAPI.csproj",
+        "--launch-profile",
+        "http-test"
+      ],
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Test",
+        "ASPNETCORE_URLS": "http://localhost:3001"
+      },
       "console": "integratedTerminal",
       "serverReadyAction": {
         "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
@@ -57,8 +68,8 @@
       "stopAll": true
     },
     {
-      "name": "Web API (Debug) + UI",
-      "configurations": ["Web API (Debug)", "UI App"],
+      "name": "Web API (Test) + UI",
+      "configurations": ["Web API (Test)", "UI App"],
       "stopAll": true
     }
   ]

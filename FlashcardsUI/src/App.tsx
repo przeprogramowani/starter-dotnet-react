@@ -1,16 +1,24 @@
-import "./App.css";
-import {FlashcardsContainer} from "./containers/FlashcardsContainer";
+import {CssBaseline, Container, Box} from "@mui/material";
+import Navbar from "./components/Navbar.tsx";
+import Footer from "./components/Footer.tsx";
+import {Outlet} from "react-router-dom";
 
 function App() {
   return (
-    <div className='app'>
-      <header>
-        <h1>Flashcards Application</h1>
-      </header>
-      <main>
-        <FlashcardsContainer />
-      </main>
-    </div>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        minHeight: "100vh",
+      }}
+    >
+      <CssBaseline />
+      <Navbar />
+      <Container sx={{flex: 1}}>
+        <Outlet />
+      </Container>
+      <Footer />
+    </Box>
   );
 }
 

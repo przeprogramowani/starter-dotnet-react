@@ -1,6 +1,5 @@
-export interface Flashcard {
-  id: number;
+export type CreateFlashcardDto = {
   question: string;
   answer: string;
   difficulty: string;
-}
+};
