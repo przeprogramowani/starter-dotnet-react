@@ -20,6 +20,20 @@ dotnet tool install --global dotnet-ef
 2. In FlashcardsUI run `npm install && npm run build`
 3. In FlashcardsAPI run `dotnet restore && dotnet build`
 
+## API in Test Mode
+
+```bash
+dotnet run -e ASPNETCORE_ENVIRONMENT=Test
+```
+
+## E2E with Playwright
+
+```bash
+cd FlashcardsUI
+npx playwright install
+npx playwright test
+```
+
 ## Local Development
 
 You can use built-in launch config for VS Code or run the following commands in two separate terminals:
